@@ -74,3 +74,6 @@ typings/
 
 # Sass cache
 .sass-cache/
+
+# Npm Temp file
+package-lock.json
