@@ -1,0 +1,114 @@
+@import "flexbox/variables/main.scss";
+@import "flexbox/mixins/main.scss";
+@import "flexbox/grid";
+@import "flexbox/visibility";
+
+$bg-women-color: #e7eff7;
+$type-women-color: #0c3bc0;
+$card-gutter: 1rem;
+
+/*https://assets.bloomingdales.com/styles/common/fonts/avenir/7147ec3a-8ff8-4ec9-8c5c-bd1571dc6ae6.woff
+https://assets.bloomingdales.com/styles/common/fonts/avenir/b9ebb19d-88c1-4cbd-9baf-cf51972422ec.woff
+*/
+
+@font-face {
+    font-family: "Avenir W01";
+    src: url("../fonts/b9ebb19d-88c1-4cbd-9baf-cf51972422ec.woff") format('woff');
+}
+
+@font-face {
+    font-family: "Avenir W02";
+    src: url("../fonts/7147ec3a-8ff8-4ec9-8c5c-bd1571dc6ae6.woff") format('woff');
+}
+
+
+@mixin avenir($weight) {
+  $font-weight: 400; 
+  @if $weight == "black" {
+    $font-weight: 900;
+  }
+  @else if $weight == "bold" {
+    $font-weight: 700;
+  }
+  @else if $weight == "normal" {
+    $font-weight: 400;
+  }
+  @else {
+    $font-weight: 400;
+  }
+  font-family: 'Avenir W01', Helvetica, Arial, sans-serif;
+  font-weight: $font-weight;
+}
+@mixin oswald() {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+
+body {
+	background: $bg-women-color;
+	font-size: 16px;
+}
+
+.fillerSpace {
+	height: 2000px;
+	background: #ff0000;
+}
+.project-container {
+	width: 100%;
+	.inner {
+
+		max-width: 1440px;
+		margin: 0 auto;
+		section {
+			@include row();
+			.col {
+				@include col("xs", 12);
+				@include col("sm", 6);
+				@include col("md", 4);
+				@include center("sm");
+				@include around("sm");
+				.box {
+					position: relative;
+					background: #fff;
+					padding: $card-gutter;
+					text-align: center;
+					height: calc(100% - 2rem);
+					transition: transform 0.4s, opacity 0.4s ease-out;
+					transform: scale(1.2);
+					opacity: 0;
+					@media #{$breakpoint-xs-only} {
+				    	font-size: 85%;
+				    }
+				    @media #{$breakpoint-sm-only} {
+				    	font-size: 90%;
+				    }
+					img {
+						width: 100%;
+						height: auto;
+					}
+					h2 {
+						font-family: 'Avenir W02', Helvetica, Arial, sans-serif;
+						text-transform: uppercase;
+						font-size: 1.875em;
+						line-height: 1em;
+						padding: 0;
+						margin: 1em 0 0 0;
+						color: $type-women-color;
+					}
+					p {
+						@include avenir(400);
+						font-size: 1.25em;
+						line-height: 1.3em;
+						padding: 0;
+						margin: .5em 0 3em 0;
+					}
+					&.animate {
+						opacity: 1;
+						transform: scale(1);
+					}
+				}
+			}
+		}
+	}
+}
