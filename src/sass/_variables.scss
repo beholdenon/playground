@@ -1,0 +1,35 @@
+// project specific
+$contained-max-width: 1440px;
+$type-women-color: #0c3bc0;
+$card-gutter: 1rem;
+
+// colors
+$body-color: #000;
+$body-bg: #e7eff7;
+
+// colors
+$black: #000;
+
+//typography
+$headings-margin-bottom: 1em;
+$paragraph-margin-bottom: 1em;
+$font-family-base: 'Helvetica', sans-serif;
+$font-size-base: 16px;
+$font-weight-base: normal;
+$line-height-base: 1em;
+$dt-font-weight: normal;
+$font-family-monospace: "Courier New", sans-serif;
+$label-margin-bottom: $paragraph-margin-bottom;
+
+// links
+$link-color: $black;
+$link-decoration: none;
+$link-hover-color: $black;
+$link-hover-decoration: underline;
+
+$table-cell-padding: 0;
+$table-cell-padding: 0;
+$table-caption-color: $black;
+
+// grid overrides
+$content-well-max-width: $contained-max-width;

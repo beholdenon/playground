@@ -15,6 +15,9 @@
   }
 }
 
+@mixin row-fluid() {
+  max-width: 100%;
+}
 @mixin row-reverse() {
   flex-direction: row-reverse;
 }

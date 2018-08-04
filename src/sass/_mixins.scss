@@ -1,0 +1,67 @@
+@font-face {
+    font-family: "Avenir W01";
+    src: url("../fonts/b9ebb19d-88c1-4cbd-9baf-cf51972422ec.woff") format('woff');
+}
+@font-face {
+    font-family: "Avenir W02";
+    src: url("../fonts/7147ec3a-8ff8-4ec9-8c5c-bd1571dc6ae6.woff") format('woff');
+}
+
+
+@mixin avenir($weight) {
+  $font-weight: 400; 
+  @if $weight == "black" {
+    $font-weight: 900;
+  }
+  @else if $weight == "bold" {
+    $font-weight: 700;
+  }
+  @else if $weight == "normal" {
+    $font-weight: 400;
+  }
+  @else {
+    $font-weight: 400;
+  }
+  font-family: 'Avenir W01', Helvetica, Arial, sans-serif;
+  font-weight: $font-weight;
+}
+@mixin oswald() {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+/* Hover */
+
+@mixin hover {
+  &:hover { @content; }
+}
+
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin plain-hover-focus {
+  &,
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin hover-focus-active {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}
+
+/* Images */
+
+@mixin img-fluid {
+  max-width: 100%;
+  height: auto;
+}
