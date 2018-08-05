@@ -6,63 +6,72 @@
 @import "mixins";
 @import "reboot";
 
-p {
-	line-height: 1.3em;
+%fadeScale {
+	transition: transform 0.4s, opacity 0.4s ease-out;
+	transform: scale(1.2) rotate(10deg) translateX(20px);
+	opacity: 0;
+	&.animate {
+		opacity: 1;
+		transform: scale(1) rotate(0deg) translateX(0);
+	}
 }
-.project-container {
-	overflow: hidden;
-	section {
-		@include row();
-		//@include row-fluid();
-		@media #{$breakpoint-xs-only} {
-			padding: $card-gutter/2;
+.projectContainer {
+	@media #{$breakpoint-xs-only} {
+    	font-size: 85%;
+    }
+    @media #{$breakpoint-sm-only} {
+    	font-size: 90%;
+    }
+    .boxContainer{
+    	text-align: center;
+		h1 {
+			font-family: 'Avenir W02', Helvetica, Arial, sans-serif;
+			text-transform: uppercase;
+			font-size: 2.5em;
+			line-height: 1em;
+			margin: .5em 0 0 0;
 		}
-		.col {
-			@include col("xs", 12);
-			@include col("sm", 6);
-			@include col("md", 4);
-			.box {
-				background: #fff;
-				padding: $card-gutter;
-				text-align: center;
-				transition: transform 0.4s, opacity 0.4s ease-out;
-				transform: scale(1.2) rotate(10deg) translateX(20px);
-				opacity: 0;
-				height: 100%;
-				@media #{$breakpoint-xs-only} {
-			    	font-size: 85%;
-			    }
-			    @media #{$breakpoint-sm-only} {
-			    	font-size: 90%;
-			    }
-				img {
-					width: 100%;
-					height: auto;
-				}
-				h2 {
-					font-family: 'Avenir W02', Helvetica, Arial, sans-serif;
-					text-transform: uppercase;
-					font-size: 1.875em;
-					line-height: 1em;
-					margin: 1em 0 0 0;
-					color: $type-women-color;
-				}
-				p {
-					@include avenir(400);
-					font-size: 1.20em;
-					line-height: 1.3em;
-					margin: .5em 0 3em 0;
-				}
-				&.animate {
-					opacity: 1;
-					transform: scale(1) rotate(0deg) translateX(0);
+		hr {
+			margin: .5em auto;
+			width: 100px;
+			border-bottom: .5em solid $secondary-color;
+		
+		}
+		section {
+			@include row();
+			@media #{$breakpoint-xs-only} {
+				padding: $card-gutter/2;
+			}
+			.col {
+				@include col("xs", 12);
+				@include col("sm", 6);
+				@include col("md", 4);
+				.box {
+					background: #fff;
+					padding: $card-gutter;
+					text-align: center;
+					height: 100%;
+					@extend %fadeScale;
+					img {
+						width: 100%;
+						height: auto;
+					}
+					h2 {
+						font-family: 'Avenir W02', Helvetica, Arial, sans-serif;
+						text-transform: uppercase;
+						font-size: 1.875em;
+						line-height: 1em;
+						margin: 1em 0 0 0;
+						color: $secondary-color;
+					}
+					p {
+						@include avenir(400);
+						font-size: 1.20em;
+						line-height: 1.3em;
+						margin: .5em 0 3em 0;
+					}
 				}
 			}
 		}
-	}
-	.map {
-		width: 100%;
-		height: 800px;
-		background: #fff;
 	}
 }

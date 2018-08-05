@@ -459,8 +459,11 @@ var scrollme = ( function( $ )
 $(function() {
 	var w = $(window);
 
-	function node(type, obj) {
-		return $("<" + type + "/>", obj);
+	function node(type, obj, content) {
+		if(!type) return "";
+		var node = $("<" + type + "/>", obj);
+		if(content) node.append(content);
+		return node;
 	}
 	function buildBox(data) {
 		return node("div", {class: "col"})
@@ -470,10 +473,10 @@ $(function() {
 				node("img", {src: data.image, alt: data.title})
 			)
 			.append(
-				node("h2").append(data.title)
+				node("h2", {}, data.title)
 			)
 			.append(
-				node("p").append(data.description)
+				node("p", {}, data.description)
 			)
 		);
 	}
@@ -482,9 +485,8 @@ $(function() {
 			el.append(buildBox(val));
 		});
 	}
-	function addListener() {
-		var winScroll;
-		var numBoxes = $(".box").length;
+	function addBoxListener() {
+		var winScroll, numBoxes = $(".box").length;
 		var s = w.on("scroll", function() {
 			winScroll = w.scrollTop() + w.height();
 			$(".box").not(".animate").each(function() {
@@ -492,9 +494,7 @@ $(function() {
 					$(this).addClass("animate");
 				}
 			});
-			if($(".box.animate").length === numBoxes) {
-				s.off();
-			}
+			if($(".box.animate").length === numBoxes) s.off();
 		});
 	}
 	var womenWhatsNewData = [
@@ -694,5 +694,5 @@ $(function() {
 	]
 	renderDom(womenWhatsNewData, $("#women-whats-new"));
 	renderDom(womenWhatsNewDataAnother, $("#women-whats-new-2"));
-	addListener();
+	addBoxListener();
 });
